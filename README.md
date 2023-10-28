@@ -12,7 +12,7 @@ conda activate name_env
 pip install git+https://github.com/isi-usc-edu/pyLIQTR
 ```
 ## Documentation
-LCU_Cirq documentation is avalable at [docs](.\docs)
+LCU_Cirq documentation is avalable at [docs](./docs/)
 
 Usage:
 ```python
@@ -62,3 +62,24 @@ python .\samples\hamiltonian_simulation.py
 ```
 
 ## Testing
+We present different examples for our functionalities:
+
+- `test_state_preparation.py`  
+- `test_unitaries.py`
+- `test_lcu.py` 
+
+Please uses folowing command to run our tests
+```bash
+python -m unittest discover ./tests/
+```
+
+Expected Output
+```
+..............
+----------------------------------------------------------------------
+Ran 14 tests in 0.017s
+
+OK
+```
+
+Feel free to modify the test cases in [tests](./tests/) 

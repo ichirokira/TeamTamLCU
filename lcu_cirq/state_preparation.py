@@ -4,6 +4,7 @@ import math
 from cirq.contrib.svg import SVGCircuit
 
 
+
 class GroverRudolph(cirq.Circuit):
   """
   Implement Grover Rudolph state preparation based on the paper: https://arxiv.org/abs/quant-ph/0208112
@@ -22,9 +23,19 @@ class GroverRudolph(cirq.Circuit):
     """
     super(GroverRudolph, self).__init__()
 
+    # Ensure coefficients are of valid type: it is either np.ndarray or list
+    assert isinstance(coefficients, (list, np.ndarray)), "Invalid coefficient type"
 
     if not isinstance(coefficients, np.ndarray):
       coefficients = np.array(coefficients)
+    
+    # Ensure not empty input
+    assert len(coefficients) > 0, "Expect non-empty input"
+    # Ensure all coefficients are numbers
+    assert not np.issubdtype(coefficients.dtype, np.str_), "Invalid coefficient type"
+    # Ensure all coefficients are non-negative
+    assert np.all(coefficients >= 0), "All coefficients must be non-negative"
+
 
     # Delare number of qubits. Pad zero values if not length power of 2
     length = len(coefficients)
