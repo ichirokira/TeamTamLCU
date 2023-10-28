@@ -1,4 +1,5 @@
 # TeamTamLCU
+The LCU_Cirq is the implementation of LCU technique using [Cirq](https://github.com/quantumlib/Cirq/).
 
 ## Set up
 
@@ -10,3 +11,54 @@ conda activate name_env
 
 pip install git+https://github.com/isi-usc-edu/pyLIQTR
 ```
+## Documentation
+LCU_Cirq documentation is avalable at [docs](.\docs)
+
+Usage:
+```python
+from lcu_cirq.lcu import LCU
+import numpy as np
+import cirq
+from cirq.contrib.svg import SVGCircuit
+
+# Define coefficients and unitaries
+coefficients = [0.7, 0.5]
+unitaries = [np.array([[0,1],[1,0]]), np.array([[0,-1j],[1j,0]])]
+
+# Construct LCU circuit
+circuit = LCU(coefficients=coefficients, unitaries=unitaries)
+print(circuit)
+```
+
+Output:
+
+```
+lcu0: ───Ry(0.447π)───(0)───@────Ry(-0.447π)───
+                      │     │
+lcu1: ────────────────U0────U1─────────────────
+```
+
+## Examples
+We present an example of using our LCU circuit for Hamiltonian Simulation:
+```python
+# Input
+H = {"XYZ": 3, "YZZ": 3, "ZXX":3}
+
+# Output
+================RESULT===============
+[INFO] Quantum-run output state: [ 0.10899131+0.0000000e+00j  0.        -3.0104485e-01j
+ -0.10095187+0.0000000e+00j  0.        +3.2430604e-01j
+ -0.62535083+0.0000000e+00j  0.        -2.3676381e-09j
+ -0.6253508 +0.0000000e+00j  0.        -2.3676381e-09j]
+[INFO] Classical-run output state: [ 0.1089913 +0.j          0.        -0.30104481j -0.10095187+0.j
+  0.        +0.32430599j -0.62535081+0.j          0.        +0.j
+ -0.62535081+0.j          0.        +0.j        ]
+Matched
+```
+
+Please feel free to change the input and run to following command:
+```bash
+python .\samples\hamiltonian_simulation.py
+```
+
+## Testing
