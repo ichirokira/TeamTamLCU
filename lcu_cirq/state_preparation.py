@@ -7,9 +7,26 @@ from cirq.contrib.svg import SVGCircuit
 
 class GroverRudolph(cirq.Circuit):
   """
-  Implement Grover Rudolph state preparation based on the paper: https://arxiv.org/abs/quant-ph/0208112
-  Output the circuit prepare the state which amplitudes are square root of input coefficients.
-  """
+    GroverRudolph: extends the cirq.Circuit class to implement Grover Rudolph state preparation based on the paper: 
+    https://arxiv.org/abs/quant-ph/0208112. It is designed to prepare a quantum state whose amplitudes are square roots of given coefficients.
+
+    Attributes:
+        - num_qubits (int): The number of qubits needed for the state preparation.
+        - coefficients (np.ndarray): The coefficients for the state preparation.
+        - on_qubits (list of cirq.NamedQubit): The qubits on which the circuit will be applied.
+                                               Fixed as None for this project.
+
+    Methods:
+        - __init__(self, coefficients, on_qubits=None): Initializes the class attributes.
+        - compute_angle(self, step, previous_sum): Computes the rotation angles for Ry gates.
+        - _build_circuit_(self): Builds the state preparation circuit.
+        - visualise(self): Returns the SVG circuit for visualization.
+
+    Error Handling:
+        - Checks if the input coefficients are normalized to 1 using L1 norm, if not, normalize them.
+        - If the length of the coefficients is not a power of 2, it pads with zeros to make it so.
+
+  """ 
   def __init__(self, coefficients, on_qubits=None):
     """
     Specify the list of coefficients for the state and declare some paramaters
@@ -17,9 +34,12 @@ class GroverRudolph(cirq.Circuit):
 
 
     Args:
-      coeffients: list of coefficients for the state. If the coefficients are
+      coeffients(np.ndarray): list of coefficients for the state. If the coefficients are
                   not normalized, the coefficients will be normalized using l1 norm.
-      on_qubits: (Optional) qubit or list of qubits that the circuit applies to
+      on_qubits(cirq.NamedQubit, Optional): qubit or list of qubits that the circuit applies to. 
+                                             Fixed as None for this project.
+    Raises:
+           - AssertionError: If coefficients are not a non-empty np.ndarray or not normalized or not non-negative.
     """
     super(GroverRudolph, self).__init__()
 
@@ -62,13 +82,19 @@ class GroverRudolph(cirq.Circuit):
 
   def compute_angle(self, step, previous_sum):
     """
-    Compute the rotation angle for based on the induction step
+    compute_angle: Computes the rotation angles required for the Ry gates at a specific 
+                       induction step based on the coefficients of the quantum state.
 
     Args:
-      step: 'int' induction step from 0 to num_qubits-1
+        - step (int): The induction step, ranging from 0 to num_qubits - 1.
+        - previous_sum (list of float): The sum of squared coefficients from the previous induction step.
 
     Returns:
-      angle(s) corresponding to the induction step
+        - angles (list of float): A list of rotation angles computed based on the coefficients and the induction step.
+        - current_sum (list of float): The sum of squared coefficients for the current induction step.
+
+    Description:
+        The function computes rotation angles based on the previous sum of coefficients and the induction step.        
     """
     count = 0
     angles = []
@@ -87,8 +113,13 @@ class GroverRudolph(cirq.Circuit):
 
   def _build_circuit_(self) -> None:
     """
-    Construct the state preparation circuit
+    _build_circuit_: Constructs the state preparation circuit.
 
+    Description:
+        The function constructs the state preparation circuit based on the rotation angles computed.
+
+    Returns:
+        None (updates the circuit in-place).
     """
 
     # Perform induction steps
@@ -105,7 +136,12 @@ class GroverRudolph(cirq.Circuit):
                           control_values=[int(b) for b in format(j, "b").zfill(step)]), strategy= cirq.InsertStrategy.NEW_THEN_INLINE)
 
   def visualise(self):
-    """Get the SVG circuit (for visualization)"""
+    """
+    visualise: Returns the SVG circuit for visualization.
+
+    Returns:
+        SVG representation of the circuit.
+    """
     return SVGCircuit(self)
 
 
