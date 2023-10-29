@@ -85,8 +85,8 @@ class TestLCU(unittest.TestCase):
         # Initialize coefficients and unitaries
 #         coefficients = np.array([1/np.sqrt(2), 1/np.sqrt(2)])
 #         coefficients = np.array([1, 1])
-        coefficients = np.array([0.2, 0.8])
-        unitaries = [np.eye(4), np.array([[0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0], [1, 0, 0, 0]])]
+        coefficients = np.array([0.2, 0.3, 0.5])
+        unitaries = [np.eye(4), np.array([[0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0], [1, 0, 0, 0]]), np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])]
 
         
         # Initialize LCU class
@@ -99,7 +99,7 @@ class TestLCU(unittest.TestCase):
         # Get post-measurement state of the second qubit state and normalize the state
         output_on_0 = results.final_state_vector[0:2**2]
         
-        expected_output=np.array([0.2, 0, 0, 0.8])
+        expected_output=np.array([0.7, 0, 0, 0.3])
         
         np.testing.assert_allclose(output_on_0, expected_output, atol=1e-06)
 
