@@ -3,17 +3,19 @@ The LCU_Cirq is the implementation of LCU technique using [Cirq](https://github.
 
 ## Set up
 
-
-We recommend to follow the installation guides from [pyLIQTR](https://github.com/isi-usc-edu/pyLIQTR/tree/v0.3.0). 
+Our installation is based on the installation guides from [pyLIQTR](https://github.com/isi-usc-edu/pyLIQTR/tree/v0.3.0). 
 
 **It requires Python Environment of 3.8**. We recommend to use virtual environment (i.e. conda environment); however it is optional.
-The code general work with python 3.8 version (the other versions have not properly tested yet)
+The code general work with python 3.8 version (the other versions have not properly tested yet).
+
+**Please follow the following guidelines**.
 ```
 # Environment create (Optional)
 conda create -n name_env python=3.8
 conda activate name_env
 # Install Package
 pip install git+https://github.com/isi-usc-edu/pyLIQTR.git@v0.3.0
+pip install ipykernel
 ```
 ## Documentation
 LCU_Cirq documentation is avalable at [docs](./docs/)
@@ -62,9 +64,15 @@ truncated_degree = 5
 Matched
 ```
 
-Please feel free to change the input and run the following command:
+Please feel free to change the input in [hamiltonian_simulation.py](/samples/hamiltonian_simulation.py) and run the following command:
+
+(**Window**)
 ```bash
 python .\samples\hamiltonian_simulation.py
+```
+(**Linux and Mac**)
+```bash
+python ./samples/hamiltonian_simulation.py
 ```
 
 ## Testing
@@ -74,7 +82,13 @@ We present different examples for our functionalities:
 - `test_unitaries.py`
 - `test_lcu.py` 
 
-Please uses folowing command to run our tests
+Please uses folowing command to run our tests:
+
+(**Window**)
+```bash
+python -m unittest discover .\tests\
+```
+(**Linux and Mac**)
 ```bash
 python -m unittest discover ./tests/
 ```
