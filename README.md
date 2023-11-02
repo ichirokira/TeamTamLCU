@@ -3,18 +3,19 @@ The LCU_Cirq is the implementation of LCU technique using [Cirq](https://github.
 
 ## Set up
 
-
-We recommend to follow the installation guides from [pyLIQTR](https://github.com/isi-usc-edu/pyLIQTR/tree/v0.3.0). 
+Our installation is based on the installation guides from [pyLIQTR](https://github.com/isi-usc-edu/pyLIQTR/tree/v0.3.0). 
 
 **It requires Python Environment of 3.8**. We recommend to use virtual environment (i.e. conda environment); however it is optional.
-The code general work with python 3.8 version (the other versions have not properly tested yet)
+The code general work with python 3.8 version (the other versions have not properly tested yet).
+
+**Please follow the following guidelines**.
 ```
 # Environment create (Optional)
 conda create -n name_env python=3.8
 conda activate name_env
 # Install Package
 pip install git+https://github.com/isi-usc-edu/pyLIQTR.git@v0.3.0
-pip install ipykernel # To run our jupyter notebook
+pip install ipykernel
 ```
 ## Documentation
 LCU_Cirq documentation is avalable at [docs](./docs/)
