@@ -13,7 +13,7 @@ The code general work with python 3.8 version (the other versions have not prope
 conda create -n name_env python=3.8
 conda activate name_env
 # Install Package
-pip install git+https://github.com/isi-usc-edu/pyLIQTR
+pip install git+https://github.com/isi-usc-edu/pyLIQTR.git@v0.3.0
 ```
 ## Documentation
 LCU_Cirq documentation is avalable at [docs](./docs/)
