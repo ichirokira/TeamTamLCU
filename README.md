@@ -62,7 +62,7 @@ truncated_degree = 5
 Matched
 ```
 
-Please feel free to change the input and run the following command:
+Please feel free to change the input in [hamiltonian_simulation.py](/samples/hamiltonian_simulation.py) and run the following command:
 
 (**Window**)
 ```bash
