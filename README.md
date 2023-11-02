@@ -6,7 +6,8 @@ The LCU_Cirq is the implementation of LCU technique using [Cirq](https://github.
 
 We recommend to follow the installation guides from [pyLIQTR](https://github.com/isi-usc-edu/pyLIQTR/tree/v0.3.0). 
 
-**It requires Python Environment of 3.8**
+**It requires Python Environment of 3.8**. We recommend to use virtual environment (i.e. conda environment); however it is optional.
+The code general work with python 3.8 version (the other versions have not properly tested yet)
 ```
 # Environment create (Optional)
 conda create -n name_env python=3.8
