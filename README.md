@@ -3,12 +3,15 @@ The LCU_Cirq is the implementation of LCU technique using [Cirq](https://github.
 
 ## Set up
 
-We recommend to follow the installation guides from [pyLIQTR](https://github.com/isi-usc-edu/pyLIQTR/tree/v0.3.0)
+
+We recommend to follow the installation guides from [pyLIQTR](https://github.com/isi-usc-edu/pyLIQTR/tree/v0.3.0). 
+
+**It requires Python Environment of 3.8**
 ```
-# Environment create
+# Environment create (Optional)
 conda create -n name_env python=3.8
 conda activate name_env
-
+# Install Package
 pip install git+https://github.com/isi-usc-edu/pyLIQTR
 ```
 ## Documentation
@@ -43,6 +46,8 @@ We present an example of using our LCU circuit for Hamiltonian Simulation:
 ```python
 # Input
 H = {"XYZ": 3, "YZZ": 3, "ZXX":3}
+simulation_time = 5
+truncated_degree = 5
 
 # Output
 ================RESULT===============
@@ -56,7 +61,7 @@ H = {"XYZ": 3, "YZZ": 3, "ZXX":3}
 Matched
 ```
 
-Please feel free to change the input and run to following command:
+Please feel free to change the input and run the following command:
 ```bash
 python .\samples\hamiltonian_simulation.py
 ```

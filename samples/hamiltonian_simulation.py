@@ -221,7 +221,8 @@ def classical_output(H: dict, time: float, truncated_degree: int, initial_state:
 
 
 def main():
-
+    
+    # Input (Feel free to change if you want)
     H = {"XYZ": 3, "YZZ": 3, "ZXX":3}
     simulation_time = 5
     truncated_degree = 5
