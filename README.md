@@ -63,8 +63,14 @@ Matched
 ```
 
 Please feel free to change the input and run the following command:
+
+(**Window**)
 ```bash
 python .\samples\hamiltonian_simulation.py
+```
+(**Linux and Mac**)
+```bash
+python ./samples/hamiltonian_simulation.py
 ```
 
 ## Testing
@@ -74,7 +80,13 @@ We present different examples for our functionalities:
 - `test_unitaries.py`
 - `test_lcu.py` 
 
-Please uses folowing command to run our tests
+Please uses folowing command to run our tests:
+
+(**Window**)
+```bash
+python -m unittest discover .\tests\
+```
+(**Linux and Mac**)
 ```bash
 python -m unittest discover ./tests/
 ```
